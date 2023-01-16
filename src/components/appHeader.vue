@@ -7,15 +7,20 @@ export default{
          store,
          film: '',
        }
-   },
+    },
+    methods:{
+        search(film) {
+            this.$emit('change', film)
+        }
+    },
 }
 </script>
 
 <template>
     <div class="search">
         <label for=""></label>
-        <input type="text" placeholder="inserisci il tuo film" v-model="film">
-        <button @click="$emit('change', film)">Clicca</button>
+        <input @keyup.enter="search(film)" type="text" placeholder="inserisci il tuo film" v-model="film">
+        <button @click="search(film)">Clicca</button>  
     </div>
 </template>
 
