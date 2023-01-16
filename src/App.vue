@@ -15,21 +15,23 @@ export default {
   data() {
       return {
       store,
-      key:'e0881c78a00708611e8a0dd128480c52',
-      url: 'https://api.themoviedb.org/3/movie/550?api_key=e0881c78a00708611e8a0dd128480c52',
+      apikey:'e0881c78a00708611e8a0dd128480c52',
+      url: 'https://api.themoviedb.org/3/search/movie',
     }
   },
   methods:{
-    getMovie(){
+    getMovie(title){
       axios.get(this.url,{
         params:{
+          api_key: this.apikey,
+          query: title
 
         }
 
       })
       .then((response) =>{
-        console.log(response.data)
-        this.store.movie = response.data.data
+        console.log(response.data.results)
+        this.store.movie = response.data.results
       })
     } 
   },
@@ -43,7 +45,7 @@ export default {
 
 <template>
   <header>
-    <appHeader/>
+    <appHeader @change="getMovie"/>
   </header>
   <main>
     <appMain/>
