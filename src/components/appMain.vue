@@ -10,7 +10,10 @@ export default{
    methods:{
     getImagePath: function (img){
         return new URL(`../assets/img/${img}.png`, import.meta.url).href;
-    }
+    },
+    getStar(numbers) {
+        return Math.ceil(numbers / 2)
+    },
    }
 }
 
@@ -31,10 +34,12 @@ export default{
                     <div class="text-light">
                         <p>{{ movies.title }}</p>
                         <h3>{{ movies.original_title }}</h3>
-                        <img class="flag" :src="getImagePath(movies.original_language)" alt="flag">
-                        <p>{{ movies.vote_average }}</p>
+                        <img class="flag mb-2" :src="getImagePath(movies.original_language)" alt="flag">
                     </div>
-                    <div class="d-flex align-items-end">
+                    <div class="text-light">
+                        <i v-for="n in getStar(movies.vote_average)" class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="d-flex align-items-end mt-2">
                         <button type="button" class="btn btn-danger">Guarda ora</button>
                     </div>
                 </div>
@@ -55,10 +60,12 @@ export default{
                 <div class="card-body bg-dark rounded d-flex flex-column justify-content-between">
                     <div class="text-light">
                         <h3>Titolo: {{ serie.original_name }}</h3>
-                        <img class="flag" :src="getImagePath(serie.original_language)" alt="flag">  
-                        <p>{{ serie.vote_average }}</p>
+                        <img class="flag mb-2" :src="getImagePath(serie.original_language)" alt="flag">  
                     </div>
-                    <div class="d-flex align-items-end">
+                    <div class="text-light">
+                        <i v-for="n in getStar(series.vote_average)" class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="d-flex align-items-end mt-2">
                         <button type="button" class="btn btn-danger">Guarda ora</button>
                     </div>
                 </div>

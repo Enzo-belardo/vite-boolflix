@@ -12,6 +12,7 @@ export default{
         search(film) {
             this.$emit('change', film)
         }
+        
     },
 }
 </script>
