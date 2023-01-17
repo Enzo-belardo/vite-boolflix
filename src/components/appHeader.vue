@@ -6,6 +6,7 @@ export default{
       return {
          store,
          film: '',
+         flag:['it','es','en']
        }
     },
     methods:{
